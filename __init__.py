@@ -9,7 +9,6 @@ if __name__ == '__main__':
                     'https://www.youtube.com/channel/UCnoN3upJZ1DPFgX9Y0CA8SA']
     video_link = 'https://www.youtube.com/watch?v=6zge0N962aw'
 
-
     print('\n\n** test the IDs extraction **')
 
     # test the IDs extraction
@@ -20,11 +19,11 @@ if __name__ == '__main__':
     print('\n\n** test the creation of data for a video and a channel **')
 
     # test the creation of data for a video and a channel
-    ml.makeChannel(True, channel_id) # for channel
-    ml.makeVideo(video_id) #for video
+    ml.makeChannel(True, channel_id)  # for channel
+    ml.makeVideo(video_id)  # for video
 
     print('\n\n** test the load of the data from the files **')
 
     # test the load of the data from the files
-    print(video.videoAllData(video_id)) # load the video data
+    print(video.videoAllData(video_id))  # load the video data
     print(channel.channelAllData(channel_id))  # channel the video data
