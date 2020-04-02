@@ -1,29 +1,18 @@
-if __name__ == '__main__':
-    import Yfetch.mainlib as ml
-    import Yfetch.items.channel as channel
-    import Yfetch.items.video as video
+from easySqlite3 import Db
+from config import *
 
-    video_id = 'BvpAeRGnkJ4'
-    channel_id = 'UCnYMOamNKLGVlJgRUbamveA'
-    channel_link = ['https://www.youtube.com/user/chemssouvideo',
-                    'https://www.youtube.com/channel/UCnoN3upJZ1DPFgX9Y0CA8SA']
-    video_link = 'https://www.youtube.com/watch?v=6zge0N962aw'
+# for select from tables
+db = Db(CHINOOK_PATH)  # creata a data base object
+print(db.connect())  # connect to the data base
+print(db.prepareQuery(DATA_QUERY))  # prepare query
+for elem in db.extractData():
+    print(elem)
+print(db.close())  # closing connection
 
-    print('\n\n** test the IDs extraction **')
 
-    # test the IDs extraction
-    print(ml.extractChannelId(channel_link[0]))
-    print(ml.extractChannelId(channel_link[1]))
-    print(ml.extractVideoId(video_link))
-
-    print('\n\n** test the creation of data for a video and a channel **')
-
-    # test the creation of data for a video and a channel
-    ml.makeChannel(True, channel_id)  # for channel
-    ml.makeVideo(video_id)  # for video
-
-    print('\n\n** test the load of the data from the files **')
-
-    # test the load of the data from the files
-    print(video.videoAllData(video_id))  # load the video data
-    print(channel.channelAllData(channel_id))  # channel the video data
+# for like the count functions
+db = Db(CHINOOK_PATH)  # creata a data base object
+print(db.connect())  # connect to the data base
+print(db.prepareQuery(COUNT_QUERY))  # prepare query
+print(db.notTableOutPutQuey())
+print(db.close())  # closing connection

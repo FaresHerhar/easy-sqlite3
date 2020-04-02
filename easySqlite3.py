@@ -80,14 +80,14 @@ class Db(object):
         At first, call the method with ::
 
         quey = INSERT INTO tasks(name,priority,status_id,project_id,begin_date,
-                end_date) VALUES(?,?,?,?,?,?)
+                end_date) VALUES(?,?,?,?,?,?);
 
         insert = prepareQuery(query)
         just to prepare the query for doing what ever
             like :: multi inserting elements.
 
         then call the second method like
-        insertRow(list of values by the same order)
+        insertdata(list of values by the same order)
 
         this inner method can be called as many as you need.
         before using any of the methods listed under, you should use this one
@@ -100,27 +100,27 @@ class Db(object):
         except Error:
             return False
 
-    def insertRow(self, row):
+    def insertRow   (self, data):
         """
         but before using it, use the prepareQuery(), then call this
         one with a list of the parameters(Values).
 
-        as said for inserting multiple data rows.
+        as said for inserting multiple data datas.
 
         Ex:
         ---
         prepareQuery(query)
-        insertRow([data1, data2, ...........])
+        insertdata([data1, data2, ...........])
         """
         try:
-            self.cur.execute(self.query, row)
+            self.cur.execute(self.query, data)
             self.conn.commit()
             return True
 
         except Error:
             return False
 
-    def justQuery(self, row=None):
+    def justQuery(self, data=None):
         """
         but before using it, use the prepareQuery(), then call this
         one with a list of the parameters(Values).
@@ -130,19 +130,19 @@ class Db(object):
 
         Ex:
         ---
-        query = ALTER TABLE [YOUR TABLE]
+        query = UPDATE [YOUR TABLE]
                 SET [COLMUN1]=  ? -VALUE1-
-                WHERE [COLOMUN2]=? -VALUE2-
+                WHERE [COLOMUN2]=? -VALUE2-;
 
         prepareQuery(query)
-        insertRow([data1, data2])
+        justQuery([Value1, Value2])
         """
 
         try:
-            if row is None:
+            if data is None:
                 self.cur.execute(self.query)
             else:
-                self.cur.execute(self.query, row)
+                self.cur.execute(self.query, data)
 
             self.conn.commit()
             return True
@@ -154,7 +154,7 @@ class Db(object):
         but before using it, use the prepareQuery(), then call this
         one with a list of the parameters(Values).
 
-        for data extraction; but it does not give the rows,
+        for data extraction; but it does not give the datas,
         so you should know them.
 
         in case it returns None it means that there is something wrong with
@@ -166,7 +166,7 @@ class Db(object):
                 WHERE [COLOMUN2]=? -VALUE1-
 
         prepareQuery(query)
-        insertRow([data1])
+        insertdata([data1])
 
 
         Ex2:
@@ -174,10 +174,10 @@ class Db(object):
         query = SELECT * FROM TABLE [YOUR TABLE]
 
         prepareQuery(query)
-        insertRow()
+        insertdata()
         """
         try:
-            if row is not None:
+            if data is not None:
                 self.cur.execute(self.query, data)
             else:
                 self.cur.execute(self.query)
