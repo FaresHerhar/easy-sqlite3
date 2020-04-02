@@ -9,26 +9,31 @@ THE HIRARCHY:
 -------------
 ```
     easySqlite3
-├── easySqlite3.py
 ├── __init__.py
+├── config.py
+├── data
+│   ├── chinook.db
+│   └── data.db
+├── easySqlite3.py
+├── test.py
 └── README.md
-
 ```
 
 TOOLS:
 ------
 * Language
-	* Python
-
-*  Version
-	* 3.5
+	* Python 3.5
 
 * Libraries
 	* re
 	* sqlite3
+  * unittest
 
 NOTES:
 ------
+## you can download the Sqlite data base browser
+# [DB Browser for SQLite](https://sqlitebrowser.org/)
+### find tests for all the methodes, in the test.py, and __init__.py
 * connect()
   >To start the connection to a data base.
 
@@ -74,10 +79,20 @@ db.insertRow([999, 'Fares', 'Herhar'])
 # closing connection
 db.close()
 
-```
+# for select from tables
+db = Db(CHINOOK_PATH)  # creata a data base object
+print(db.connect())  # connect to the data base
+print(db.prepareQuery(DATA_QUERY))  # prepare query
+for elem in db.extractData():
+    print(elem)
+print(db.close())  # closing connection
 
-AUTHOR:
--------
-* HERHAR Fares
-* DZ, Algeria
-* herhar.fares@yandex.com
+
+# for like the count functions
+db = Db(CHINOOK_PATH)  # creata a data base object
+print(db.connect())  # connect to the data base
+print(db.prepareQuery(COUNT_QUERY))  # prepare query
+print(db.notTableOutPutQuey())
+print(db.close())  # closing connection
+
+```
