@@ -42,7 +42,7 @@ NOTES:
 
 SAMPLE:
 -------
-```
+```python
 from easySqlite3 import Db
 
 
@@ -94,5 +94,4 @@ print(db.connect())  # connect to the data base
 print(db.prepareQuery(COUNT_QUERY))  # prepare query
 print(db.notTableOutPutQuey())
 print(db.close())  # closing connection
-
 ```
