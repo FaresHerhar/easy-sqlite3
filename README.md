@@ -50,7 +50,7 @@ db.ddl_query(TABLE)
 db.prepare_query(INSERT_QUERY)
 
 # insert into table
-db.dml_query([999, 'Fares', 'Herhar'])
+db.dcl_query([999, 'Fares', 'Herhar'])
 
 # closing connection
 db.close()
