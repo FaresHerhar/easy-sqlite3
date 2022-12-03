@@ -44,13 +44,13 @@ db = Db(DATA_BASE_PATH)
 db.connect()
 
 # create the table
-db.create_table(TABLE)
+db.ddl_query(TABLE)
 
 # prepare query
 db.prepare_query(INSERT_QUERY)
 
 # insert into table
-db.insert_row([999, 'Fares', 'Herhar'])
+db.dml_query([999, 'Fares', 'Herhar'])
 
 # closing connection
 db.close()
@@ -59,7 +59,7 @@ db.close()
 db = Db(CHINOOK_PATH)  # creata a data base object
 print(db.connect())  # connect to the data base
 print(db.prepare_query(DATA_QUERY))  # prepare query
-for elem in db.extract_data():
+for elem in db.dql():
     print(elem)
 print(db.close())  # closing connection
 
@@ -68,6 +68,6 @@ print(db.close())  # closing connection
 db = Db(CHINOOK_PATH)  # creata a data base object
 print(db.connect())  # connect to the data base
 print(db.prepare_query(COUNT_QUERY))  # prepare query
-print(db.not_table_out_put_query())
+print(db.count_query())
 print(db.close())  # closing connection
 ```
