@@ -1,43 +1,34 @@
 # easySqlite3
 
-## DISCRIPTION
+## Description
 
-A very simple Library for managing and working with the Sqlite3 Library, under Python Language.
-Please make it better.
+A simple Python code for managing and working with the Sqlite3.
 
-## TOOLS
-
-* Language
-  * Python 3.5
-* Libraries
-  * re
-  * sqlite3
-  * unittest
-
-## NOTES
+## Notes
 
 ***you can download the Sqlite data base browser [DB Browser for SQLite](https://sqlitebrowser.org/)***
-***find tests for all the methodes, in the test.py, and __init__.py***
 
-* connect()
-  >To start the connection to a data base.
+> To start the connection to a data base.
 
-* close()
-  >To close the connection linked to the current data base.
+`connect()`
+  
+> To close the connection linked to the current data base.
 
-## SAMPLE
+`close()`
+
+## Sample
 
 ```python
 from easySqlite3 import Db
 
 
-TABLE = \'''
-        CREATE TABLE IF NOT EXISTS profile(
-        id INTEGER PRIMARY KEY,
-        firstName TEXT NOT NULL,
-        lastName TEXT NOT NULL
-        );
-        \'''
+TABLE = """\
+CREATE TABLE IF NOT EXISTS profile(
+  id INTEGER PRIMARY KEY,
+  firstName TEXT NOT NULL,
+  lastName TEXT NOT NULL
+);
+"""
 
 DATA_BASE_PATH = 'db.sql'
 INSERT_QUERY = 'INSERT INTO profile(id, firstName, lastName) VALUES (?, ?, ?)'
@@ -53,13 +44,13 @@ db = Db(DATA_BASE_PATH)
 db.connect()
 
 # create the table
-db.createTable(TABLE)
+db.create_table(TABLE)
 
 # prepare query
-db.prepareQuery(INSERT_QUERY)
+db.prepare_query(INSERT_QUERY)
 
 # insert into table
-db.insertRow([999, 'Fares', 'Herhar'])
+db.insert_row([999, 'Fares', 'Herhar'])
 
 # closing connection
 db.close()
@@ -67,8 +58,8 @@ db.close()
 # for select from tables
 db = Db(CHINOOK_PATH)  # creata a data base object
 print(db.connect())  # connect to the data base
-print(db.prepareQuery(DATA_QUERY))  # prepare query
-for elem in db.extractData():
+print(db.prepare_query(DATA_QUERY))  # prepare query
+for elem in db.extract_data():
     print(elem)
 print(db.close())  # closing connection
 
@@ -76,7 +67,7 @@ print(db.close())  # closing connection
 # for like the count functions
 db = Db(CHINOOK_PATH)  # creata a data base object
 print(db.connect())  # connect to the data base
-print(db.prepareQuery(COUNT_QUERY))  # prepare query
-print(db.notTableOutPutQuey())
+print(db.prepare_query(COUNT_QUERY))  # prepare query
+print(db.not_table_out_put_query())
 print(db.close())  # closing connection
 ```
