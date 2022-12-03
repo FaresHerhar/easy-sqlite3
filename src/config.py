@@ -14,7 +14,7 @@ INSERT_QUERY = 'INSERT INTO profile(id, firstName, lastName) VALUES (?, ?, ?)'
 
 # two different senarios
 JUST_QUERY = "UPDATE profile SET firstName=\"Ilyes\" WHERE lastName=\"Herhar\";"
-JUST_QUERY_1 = "UPDATE profile SET firstName = ? WHERE lastName = ? ;"
+JUST_QUERY_ = "UPDATE profile SET firstName = ? WHERE lastName = ? ;"
 
 # data exctract query
 DATA_QUERY = "SELECT * FROM playlists LIMIT 1;"
